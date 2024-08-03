@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{B9D44AD3-101
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionService.Domain", "AuctionService.Domain\AuctionService.Domain.csproj", "{D43BB312-F2C8-486D-AE90-86BD22AEDBDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionService.Infrastructure", "AuctionService.Infrastructure\AuctionService.Infrastructure.csproj", "{3D6AFCC0-D720-4608-8FD7-CC4405898F7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{D43BB312-F2C8-486D-AE90-86BD22AEDBDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D43BB312-F2C8-486D-AE90-86BD22AEDBDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D43BB312-F2C8-486D-AE90-86BD22AEDBDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D6AFCC0-D720-4608-8FD7-CC4405898F7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D6AFCC0-D720-4608-8FD7-CC4405898F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D6AFCC0-D720-4608-8FD7-CC4405898F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D6AFCC0-D720-4608-8FD7-CC4405898F7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,6 +41,7 @@ Global
 		{8D14AF55-A547-44E0-80EC-86915287534F} = {00907E2F-765E-4107-B45A-EC9301A9ED62}
 		{B9D44AD3-101E-41D5-9E5C-B5D0CB9B3163} = {00907E2F-765E-4107-B45A-EC9301A9ED62}
 		{D43BB312-F2C8-486D-AE90-86BD22AEDBDB} = {7306AF73-8726-453C-970F-9ADE0657ACE7}
+		{3D6AFCC0-D720-4608-8FD7-CC4405898F7E} = {1381DA75-5FEB-4940-87CD-07B41797C883}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BB7F4E56-C658-4A6D-98DE-44806E76389C}
