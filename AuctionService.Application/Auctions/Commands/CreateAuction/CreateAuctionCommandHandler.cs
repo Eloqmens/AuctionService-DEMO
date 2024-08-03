@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AuctionService.Domain.Entities;
+﻿using AuctionService.Domain.Entities;
 using AuctionService.Infrastructure.Data;
 using MediatR;
+
 namespace AuctionService.Application.Auctions.Commands.CreateAuction
 {
     public class CreateAuctionCommandHandler : IRequestHandler<CreateAuctionCommand, int>

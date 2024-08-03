@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using AuctionService.Domain.Entities;
-using System;
+﻿using AuctionService.Domain.Entities;
 
 namespace AuctionService.Infrastructure.Data
 {

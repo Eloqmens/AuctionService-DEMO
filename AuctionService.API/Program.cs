@@ -3,6 +3,7 @@ using MediatR;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using AuctionService.Application.Auctions.Commands.CreateAuction;
+using AuctionService.Application.Auctions.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,8 @@ builder.Services.AddDbContext<AuctionDbContext>(options =>
 
 // Add MediatR
 builder.Services.AddMediatR(config => {
-    config.RegisterServicesFromAssembly(typeof(Program).Assembly);
+    config.RegisterServicesFromAssembly(typeof(CreateAuctionCommand).Assembly);
+    config.RegisterServicesFromAssembly(typeof(GetAuctionsQuery).Assembly);
 });
 
 // Add FluentValidation
