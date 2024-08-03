@@ -1,24 +1,38 @@
 ﻿using AuctionService.Application.Auctions.Commands.CreateAuction;
+using AuctionService.Application.Auctions.Queries;
+using AuctionService.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionService.API.Controllers
 {
-    [ApiController]
-    [Route("api/controller")]
-    public class AuctionController : Controller
+    namespace AuctionService.API.Controllers
     {
-        private readonly IMediator _mediator;
-        public AuctionController(IMediator mediator)
+        [ApiController]
+        [Route("api/[controller]")]
+        public class AuctionsController : ControllerBase
         {
-            _mediator = mediator;
-        }
+            private readonly IMediator _mediator;
 
-        [HttpPost]
-        public async Task<IActionResult> Create(CreateAuctionCommand command)
-        {
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            public AuctionsController(IMediator mediator)
+            {
+                _mediator = mediator;
+            }
+
+            [HttpPost]
+            public async Task<IActionResult> Create(CreateAuctionCommand command)
+            {
+                var auctionId = await _mediator.Send(command);
+                return Ok(auctionId);
+            }
+
+            [HttpGet]
+            public async Task<ActionResult<List<Auction>>> GetAll()
+            {
+                var auctions = await _mediator.Send(new GetAuctionsQuery());
+                return Ok(auctions);
+            }
         }
     }
+
 }

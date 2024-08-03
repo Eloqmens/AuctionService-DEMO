@@ -1,6 +1,9 @@
 using AuctionService.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
+using MediatR;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using AuctionService.Application.Auctions.Commands.CreateAuction;
+using AuctionService.Application.Auctions.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,18 +14,25 @@ builder.Services.AddSwaggerGen();
 
 // Add DbContext
 builder.Services.AddDbContext<AuctionDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseInMemoryDatabase("AuctionDb"));
 
 // Add MediatR
 builder.Services.AddMediatR(config => {
-    config.RegisterServicesFromAssembly(typeof(Program).Assembly);
+    config.RegisterServicesFromAssembly(typeof(CreateAuctionCommand).Assembly);
+    config.RegisterServicesFromAssembly(typeof(GetAuctionsQuery).Assembly);
 });
 
-
 // Add FluentValidation
-builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateAuctionCommandValidator>();
 
 var app = builder.Build();
+
+// Apply migrations and seed data automatically
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AuctionDbContext>();
+    dbContext.Seed(); // Seed the database
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -32,9 +42,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
